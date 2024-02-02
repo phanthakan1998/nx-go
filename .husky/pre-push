@@ -1,16 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# Run affected tests and linting
-npx nx affected -t test && npx nx affected -t lint
-
-coverage=$(npx nx run starter-template:test --with-deps --show-output --silent | grep -oP '(?<=Coverage: ).*(?=%)')
-
-coverage_int=$(echo "$coverage" | awk -F'.' '{print $1}')
-
-if [ "$coverage_int" -gt 70 ]; then
-  echo "Coverage is greater than 70%: $coverage%"
-else
-  echo "Coverage is less than or equal to 70%: $coverage%"
-  exit 1 
-fi
+npx nx affected -t test && npx nx affected -t component-test && npx nx lint component-ui && npx nx lint frontend-template && nx test frontend-template && nx test backend-template

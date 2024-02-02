@@ -3,7 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint"
   },
   "private": true,
   "dependencies": {
@@ -14,8 +20,11 @@
     "@nx/eslint-plugin": "^17.3.1",
     "@nx/js": "17.3.1",
     "@nx/workspace": "17.3.1",
+    "@types/node": "20.8.2",
+    "gts": "^5.2.0",
+    "husky": "^8.0.3",
     "nx": "17.3.1",
-    "husky": "^8.0.0"
+    "typescript": "~5.2.0"
   },
   "husky": {
     "hooks": {
