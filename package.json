@@ -2,12 +2,25 @@
   "name": "@fujistu-centralize-api-mono-repo/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky install"
+  },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@nx-go/nx-go": "^2.8.0",
+    "husky-init": "^8.0.0"
+  },
   "devDependencies": {
+    "@nx/eslint-plugin": "^17.3.1",
     "@nx/js": "17.3.1",
     "@nx/workspace": "17.3.1",
-    "nx": "17.3.1"
+    "nx": "17.3.1",
+    "husky": "^8.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm run lint"
+    }
   }
 }

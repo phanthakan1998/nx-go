@@ -1,0 +1,30 @@
+{
+    "name": "starter-template",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "sourceRoot": "apps/starter-template",
+    "targets": {
+      "serve": {
+        "executor": "nx:run-commands",
+        "options": {
+          "cwd": "apps/starter-template",
+          "command": "go run main.go"
+        }
+      },
+      "test": {
+        "executor": "nx:run-commands",
+        "options": {
+          "cwd": "apps/starter-template",
+          "command": "go test -cover"
+        }
+      },
+      "lint": {
+        "executor": "nx:run-commands",
+        "options": {
+          "cwd": "apps/starter-template",
+          "command": "golangci-lint run"
+        }
+      }
+    },
+    "tags": []
+  }
