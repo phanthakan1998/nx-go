@@ -15,7 +15,7 @@
         "executor": "nx:run-commands",
         "options": {
           "cwd": "apps/starter-template",
-          "command": "go test -cover"
+          "command": "go test $(go list ./... | grep -v /vendor/) -cover -coverprofile=../../coverage/starter-template/coverage.out"
         }
       },
       "lint": {
@@ -23,6 +23,13 @@
         "options": {
           "cwd": "apps/starter-template",
           "command": "golangci-lint run"
+        }
+      },
+      "tool": {
+        "executor": "nx:run-commands",
+        "options": {
+          "cwd": "apps/starter-template",
+          "command": "go tool cover -html=../../coverage/starter-template/coverage.out"
         }
       }
     },
