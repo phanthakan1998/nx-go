@@ -8,8 +8,9 @@ module.exports = {
   plugins: [
     {
       rules: {
-        'header-match-team-pattern': parsed => {
-          const {type, scope, subject} = parsed;
+        'header-match-team-pattern': (parsed) => {
+          const { type, scope, subject } = parsed;
+          console.log({ parsed });
           if (type === null && scope === null && subject === null) {
             return [
               false,
