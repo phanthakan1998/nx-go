@@ -2,13 +2,21 @@ package main
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/suite"
 )
 
-func TestHelloWorld(t *testing.T) {
+type MainTestSuite struct {
+	suite.Suite
+}
+
+func (suite *MainTestSuite) TestHelloWorld() {
 	expected := "Hello World"
 	result := HelloWorld()
+	assert.Equal(suite.T(), expected, result, "HelloWorld() returned unexpected result")
+}
 
-	if result != expected {
-		t.Errorf("HelloWorld() returned unexpected result: got %s, want %s", result, expected)
-	}
+func TestSuite(t *testing.T) {
+	suite.Run(t, new(MainTestSuite))
 }
